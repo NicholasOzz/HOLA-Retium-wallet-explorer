@@ -17,7 +17,12 @@ class RetiumApiError extends Error {
 
 async function getJson(path) {
   const url = `${RPC_BASE}${path}`;
-  const res = await fetch(url);
+  const res = await fetch(url, {
+  headers: {
+    "User-Agent": "retium-wallet-explorer/0.1 (+https://github.com/NicholasOzz/HOLA-Retium-wallet-explorer)",
+    Accept: "application/json",
+  },
+});
   const text = await res.text();
   let body;
   try {
