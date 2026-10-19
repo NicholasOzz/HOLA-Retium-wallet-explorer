@@ -1,0 +1,257 @@
+:root {
+  --bg: #f4f6f8;
+  --card: #ffffff;
+  --border: #e2e4e9;
+  --text: #15171c;
+  --muted: #5b6270;
+  --accent: #ff5c00;
+  --gradient-start: #22c1e8;
+  --gradient-end: #0d8fc4;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1115;
+    --card: #1a1d24;
+    --border: #2a2e37;
+    --text: #e8e9ec;
+    --muted: #9aa1ac;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.topbar {
+  padding: 1rem 1.25rem;
+  background: #e8f6fb;
+  border-bottom: 1px solid var(--border);
+}
+
+@media (prefers-color-scheme: dark) {
+  .topbar { background: #12181b; }
+}
+
+.crumbs {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 4rem;
+}
+
+/* --- Check Your Wallet card --- */
+
+.check-card {
+  background: linear-gradient(160deg, var(--gradient-start), var(--gradient-end));
+  border-radius: 24px;
+  padding: 2rem 1.5rem;
+  color: #fff;
+}
+
+.check-card h1 {
+  margin: 0 0 1.5rem;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.field-label {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin: 0 0 0.6rem;
+}
+
+.select-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #fff;
+  border-radius: 999px;
+  padding: 0.85rem 1.1rem;
+  margin-bottom: 1.6rem;
+}
+
+.chain-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  background: #2b2fe0;
+  flex-shrink: 0;
+}
+
+.select-wrap select {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 1.05rem;
+  color: var(--text);
+  font-family: inherit;
+  appearance: none;
+}
+
+.mode-panel {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  padding: 1.25rem;
+}
+
+.mode-toggle {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.1rem;
+}
+
+.mode-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+}
+
+.mode-btn.active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+#address-input,
+#address-textarea {
+  width: 100%;
+  background: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.9rem 1.1rem;
+  font-size: 1rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--text);
+  margin-bottom: 1.1rem;
+}
+
+#address-textarea {
+  border-radius: 18px;
+  resize: vertical;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.check-btn {
+  width: 100%;
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.85rem 1rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  cursor: pointer;
+}
+
+.check-btn:hover { background: rgba(255, 255, 255, 0.12); }
+.check-btn:disabled { opacity: 0.6; cursor: default; }
+
+/* --- Status + result cards (unchanged look) --- */
+
+#status {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  min-height: 1.2em;
+}
+
+#status.error { color: #e0463a; }
+
+#result {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.address-block {
+  font-weight: 700;
+  font-family: ui-monospace, monospace;
+  font-size: 0.85rem;
+  word-break: break-all;
+  color: var(--accent);
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+}
+
+.card h2 {
+  margin: 0 0 0.6rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.stat {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.stat small {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+.unavailable {
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.token-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.token-row:last-child { border-bottom: none; }
+
+.note {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.4rem;
+}
+
+.wallet-group {
+  display: grid;
+  gap: 0.6rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed var(--border);
+}
